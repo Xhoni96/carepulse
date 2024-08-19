@@ -183,10 +183,6 @@
 
   /* =====  SHADCN OVERRIDES */
 
-  .shad-danger-btn {
-    @apply bg-red-700 text-white !important;
-  }
-
   .shad-gray-btn {
     @apply border border-dark-500 cursor-pointer bg-dark-400 text-white !important;
   }
