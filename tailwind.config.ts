@@ -29,6 +29,9 @@ const config = {
         },
         light: {
           200: "#E8E9E9",
+          800: "#ffffffc9",
+          900: "#ffffffdb",
+          grey: "#ffffff1f",
         },
         dark: {
           200: "#0D0F10",
@@ -37,6 +40,7 @@ const config = {
           500: "#363A3D",
           600: "#76828D",
           700: "#ABB8C4",
+          800: "#C0D0DE",
         },
       },
       fontFamily: {
@@ -68,6 +72,7 @@ const config = {
       },
     },
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
