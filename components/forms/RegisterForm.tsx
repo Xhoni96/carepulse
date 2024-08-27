@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Mail, User as UserIcon } from "lucide-react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -13,10 +12,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { createPatient } from "@/lib/actions/patient.actions";
-import { Doctors, IdentificationTypes, patientRegisterFormInitialValues } from "@/lib/constants";
+import { IdentificationTypes, patientRegisterFormInitialValues } from "@/lib/constants";
 import type { User } from "@/lib/types";
 import { patientRegisterFormSchema } from "@/lib/validationSchemas";
 
+import { DoctorsDropdown } from "../DoctorsDropdown";
 import { FileUploader } from "../FileUploader";
 import { Checkbox } from "../ui/checkbox";
 import { DatePicker } from "../ui/date-picker";
@@ -57,7 +57,7 @@ export const RegisterForm = (props: RegisterFormType) => {
       });
 
       if (newPatient) {
-        router.push(`/patients/${newPatient.$id}/new-appointment`);
+        router.push(`/patients/${newPatient.userId}/new-appointment`);
       }
     } catch (error: unknown) {
       const msg = error instanceof Error ? error.message : "Something went wrong";
@@ -67,7 +67,7 @@ export const RegisterForm = (props: RegisterFormType) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-11">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
         <section className="mb-12 space-y-4">
           <h1 className="text-28-bold md:text-32-bold text-light-900">Welcome!</h1>
           <p className="text-dark-700">Let us know more about yourself</p>
@@ -202,37 +202,7 @@ export const RegisterForm = (props: RegisterFormType) => {
           <FormField
             control={form.control}
             name="primaryPhysician"
-            render={({ field }) => (
-              <FormItem className="grow">
-                <FormLabel>Primary care physician</FormLabel>
-
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a physician" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {Doctors.map((doctor, i) => (
-                      <SelectItem key={doctor.name + i} value={doctor.name}>
-                        <div className="flex cursor-pointer items-center gap-2">
-                          <Image
-                            src={doctor.image}
-                            width={32}
-                            height={32}
-                            alt="doctor"
-                            className="rounded-full border border-dark-500"
-                          />
-                          <p>{doctor.name}</p>
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-
-                <FormMessage />
-              </FormItem>
-            )}
+            render={({ field }) => <DoctorsDropdown onValueChange={field.onChange} value={field.value} />}
           />
 
           {/* INSURANCE & POLICY NUMBER */}

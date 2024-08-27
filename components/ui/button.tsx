@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot, Slottable } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Loader } from "lucide-react";
 import * as React from "react";
@@ -55,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </>
         )}
 
-        {children}
+        <Slottable>{children}</Slottable>
       </Comp>
     );
   }

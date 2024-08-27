@@ -14,6 +14,7 @@ import {
   users,
 } from "../appwrite.config";
 import type { CreateUserParams } from "../types";
+import { Patient } from "../types/appwrite.types";
 import { PatientRegisterType } from "../validationSchemas";
 
 export const createUser = async (user: CreateUserParams) => {
@@ -52,7 +53,7 @@ export const createPatient = async ({
     file = await storage.createFile(BUCKET_ID, ID.unique(), imageFile);
   }
 
-  const newPatient = await database.createDocument(DATABASE_ID, PATIENT_COLLECTION_ID, ID.unique(), {
+  const newPatient: Patient = await database.createDocument(DATABASE_ID, PATIENT_COLLECTION_ID, ID.unique(), {
     identificationDocumentId: file?.$id ? file.$id : null,
     identificationDocumentUrl: file?.$id
       ? `${APPWRITE_ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view?project=${PROJECT_ID}`
