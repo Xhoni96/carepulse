@@ -33,7 +33,14 @@ export const AppointmentModal = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" className={`capitalize ${type === "schedule" && "text-green-500"}`}>
+        <Button
+          variant="ghost"
+          className={`capitalize focus-visible:ring-offset-1  ${
+            type === "schedule"
+              ? "text-green-500 ring-offset-green-500 ring-green-500"
+              : "text-red-700 ring-offset-red-700 ring-red-700"
+          }`}
+        >
           {type}
         </Button>
       </DialogTrigger>

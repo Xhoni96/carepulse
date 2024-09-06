@@ -65,7 +65,7 @@ export const columns: ColumnDef<Appointment>[] = [
   },
   {
     id: "actions",
-    header: () => <div className="pl-4">Actions</div>,
+    header: () => <div className="pl-4 text-center">Actions</div>,
     cell: ({ row }) => {
       const appointment = row.original;
 
