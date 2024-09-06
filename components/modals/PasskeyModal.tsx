@@ -55,7 +55,7 @@ export const PasskeyModal = () => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="shad-alert-dialog">
+      <DialogContent className="space-y-5 bg-dark-400 border-dark-500 outline-none">
         <DialogHeader>
           <DialogTitle className="flex items-start justify-between">Admin Access Verification</DialogTitle>
           <DialogDescription>To access the admin page, please enter the passkey.</DialogDescription>

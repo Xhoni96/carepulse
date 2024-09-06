@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { UserForm } from "@/components/forms/UserForm";
-import { PasskeyModal } from "@/components/PasskeyModal";
+import { PasskeyModal } from "@/components/modals/PasskeyModal";
 import type { SearchParamProps } from "@/lib/types";
 
 export default function Home({ searchParams }: SearchParamProps) {

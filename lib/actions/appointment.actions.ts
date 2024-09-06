@@ -15,7 +15,7 @@ export const createAppointment = async (appointment: CreateAppointmentParams) =>
     DATABASE_ID!,
     APPOINTMENT_COLLECTION_ID!,
     ID.unique(),
-    appointment
+    appointment,
   );
 
   revalidatePath("/admin");
@@ -32,25 +32,7 @@ export const getRecentAppointmentList = async () => {
     Query.orderDesc("$createdAt"),
   ]);
 
-  // const scheduledAppointments = (
-  //   appointments.documents as Appointment[]
-  // ).filter((appointment) => appointment.status === "scheduled");
-
-  // const pendingAppointments = (
-  //   appointments.documents as Appointment[]
-  // ).filter((appointment) => appointment.status === "pending");
-
-  // const cancelledAppointments = (
-  //   appointments.documents as Appointment[]
-  // ).filter((appointment) => appointment.status === "cancelled");
-
-  // const data = {
-  //   totalCount: appointments.total,
-  //   scheduledCount: scheduledAppointments.length,
-  //   pendingCount: pendingAppointments.length,
-  //   cancelledCount: cancelledAppointments.length,
-  //   documents: appointments.documents,
-  // };
+  const documents = appointments.documents as Appointment[];
 
   const initialCounts = {
     scheduledCount: 0,
@@ -58,25 +40,24 @@ export const getRecentAppointmentList = async () => {
     cancelledCount: 0,
   };
 
-  const counts = (appointments.documents as Appointment[]).reduce((acc, appointment) => {
+  documents.forEach((appointment) => {
     switch (appointment.status) {
       case "scheduled":
-        acc.scheduledCount++;
+        initialCounts.scheduledCount++;
         break;
       case "pending":
-        acc.pendingCount++;
+        initialCounts.pendingCount++;
         break;
       case "cancelled":
-        acc.cancelledCount++;
+        initialCounts.cancelledCount++;
         break;
     }
-    return acc;
-  }, initialCounts);
+  });
 
   const data = {
     totalCount: appointments.total,
-    ...counts,
-    documents: appointments.documents,
+    ...initialCounts,
+    documents: documents,
   };
 
   return data;
@@ -110,7 +91,7 @@ export const updateAppointment = async ({
     DATABASE_ID!,
     APPOINTMENT_COLLECTION_ID!,
     appointmentId,
-    appointment
+    appointment,
   );
 
   if (!updatedAppointment) throw Error;
