@@ -22,7 +22,7 @@ export const PasskeyModal = () => {
     if (!path) return;
 
     if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY.toString()) {
-      router.push("/admin");
+      router.replace("/admin");
     } else {
       setOpen(true);
     }
