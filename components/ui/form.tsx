@@ -12,7 +12,7 @@ const Form = FormProvider;
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
   name: TName;
 };
@@ -21,7 +21,7 @@ const FormFieldContext = React.createContext<FormFieldContextValue>({} as FormFi
 
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
@@ -70,14 +70,14 @@ const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
         <div ref={ref} className={cn("space-y-2 group", className)} {...props} />
       </FormItemContext.Provider>
     );
-  }
+  },
 );
 FormItem.displayName = "FormItem";
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
->(({ className, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & { required?: boolean }
+>(({ className, required, ...props }, ref) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -85,6 +85,7 @@ const FormLabel = React.forwardRef<
       ref={ref}
       className={className}
       variant={error ? "destructive" : undefined}
+      required={required}
       htmlFor={formItemId}
       {...props}
     />
@@ -105,7 +106,7 @@ const FormControl = React.forwardRef<React.ElementRef<typeof Slot>, React.Compon
         {...props}
       />
     );
-  }
+  },
 );
 FormControl.displayName = "FormControl";
 
@@ -114,7 +115,7 @@ const FormDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttribu
     const { formDescriptionId } = useFormField();
 
     return <p ref={ref} id={formDescriptionId} className={cn("text-sm text-muted-foreground", className)} {...props} />;
-  }
+  },
 );
 FormDescription.displayName = "FormDescription";
 
@@ -137,7 +138,7 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<
         {body}
       </p>
     );
-  }
+  },
 );
 FormMessage.displayName = "FormMessage";
 

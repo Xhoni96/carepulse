@@ -14,14 +14,23 @@ const labelVariants = cva(
         destructive: "text-red-500 dark:text-red-700",
       },
     },
-  }
+  },
 );
 
 const Label = forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants>
->(({ className, variant, ...props }, ref) => (
-  <LabelPrimitive.Root ref={ref} className={cn(labelVariants({ variant }), className)} {...props} />
+  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
+    VariantProps<typeof labelVariants> & { required?: boolean }
+>(({ className, variant, required, ...props }, ref) => (
+  <LabelPrimitive.Root
+    ref={ref}
+    className={cn(
+      labelVariants({ variant }),
+      className,
+      required && "after:content-['*'] after:ml-0.5 after:text-red-700",
+    )}
+    {...props}
+  />
 ));
 Label.displayName = LabelPrimitive.Root.displayName;
 

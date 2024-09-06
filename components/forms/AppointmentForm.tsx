@@ -141,7 +141,7 @@ export const AppointmentForm = ({
                 name="reason"
                 render={({ field }) => (
                   <FormItem className="basis-1/2 flex flex-col">
-                    <FormLabel>Appointment reason</FormLabel>
+                    <FormLabel required>Appointment reason</FormLabel>
                     <FormControl>
                       <Textarea placeholder="Annual montly check-up" disabled={type === "schedule"} {...field} />
                     </FormControl>

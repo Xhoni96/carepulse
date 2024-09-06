@@ -14,7 +14,7 @@ type Props = {
 export const DoctorsDropdown = ({ value, onValueChange }: Props) => {
   return (
     <FormItem className="grow">
-      <FormLabel>Primary care physician</FormLabel>
+      <FormLabel required>Primary care physician</FormLabel>
 
       <Select onValueChange={onValueChange} value={value}>
         <FormControl>

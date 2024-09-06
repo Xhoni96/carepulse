@@ -11,5 +11,6 @@ declare namespace NodeJS {
     BUCKET_ID: string;
 
     APPWRITE_ENDPOINT: string;
+    NEXT_PUBLIC_ADMIN_PASSKEY: string;
   }
 }

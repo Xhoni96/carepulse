@@ -99,7 +99,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="birthDate"
               render={({ field }) => (
                 <FormItem className="basis-1/2 flex flex-col">
-                  <FormLabel>Date of birth</FormLabel>
+                  <FormLabel required>Date of birth</FormLabel>
                   <FormControl>
                     <DatePicker {...field} />
                   </FormControl>
@@ -112,7 +112,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="gender"
               render={({ field }) => (
                 <FormItem className="basis-1/2 space-x-3">
-                  <FormLabel>Gender</FormLabel>
+                  <FormLabel required>Gender</FormLabel>
                   <FormControl>
                     <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex !ml-0">
                       <FormItem className="flex items-center space-x-2 space-y-0 py-3 rounded-sm px-5">
@@ -142,7 +142,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="address"
               render={({ field }) => (
                 <FormItem className="basis-1/2">
-                  <FormLabel>Address</FormLabel>
+                  <FormLabel required>Address</FormLabel>
                   <FormControl>
                     <Input placeholder="ex: 14 street, New York, NY - 5101" {...field} />
                   </FormControl>
@@ -155,7 +155,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="occupation"
               render={({ field }) => (
                 <FormItem className="basis-1/2">
-                  <FormLabel>Occupation</FormLabel>
+                  <FormLabel required>Occupation</FormLabel>
                   <FormControl>
                     <Input placeholder="Software Engineer" {...field} />
                   </FormControl>
@@ -171,7 +171,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="emergencyContactName"
               render={({ field }) => (
                 <FormItem className="basis-1/2">
-                  <FormLabel>Emergency contact name</FormLabel>
+                  <FormLabel required>Emergency contact name</FormLabel>
                   <FormControl>
                     <Input placeholder="Guardian's name" {...field} />
                   </FormControl>
@@ -184,7 +184,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="emergencyContactNumber"
               render={({ field }) => (
                 <FormItem className="basis-1/2">
-                  <FormLabel>Emergency contact number</FormLabel>
+                  <FormLabel required>Emergency contact number</FormLabel>
                   <FormControl>
                     <Input placeholder="ex: +1(868) 579-9831" {...field} />
                   </FormControl>
@@ -212,7 +212,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="insuranceProvider"
               render={({ field }) => (
                 <FormItem className="basis-1/2">
-                  <FormLabel>Insurance provider</FormLabel>
+                  <FormLabel required>Insurance provider</FormLabel>
                   <FormControl>
                     <Input placeholder="ex: Blue Cross" {...field} />
                   </FormControl>
@@ -225,7 +225,7 @@ export const RegisterForm = (props: RegisterFormType) => {
               name="insurancePolicyNumber"
               render={({ field }) => (
                 <FormItem className="basis-1/2">
-                  <FormLabel>Insurance policy number</FormLabel>
+                  <FormLabel required>Insurance policy number</FormLabel>
                   <FormControl>
                     <Input placeholder="ex: ABC1234567" {...field} />
                   </FormControl>
@@ -394,7 +394,7 @@ export const RegisterForm = (props: RegisterFormType) => {
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
-                <FormLabel>I acknowledge that I have reviewed and agree to the privacy policy</FormLabel>
+                <FormLabel required>I acknowledge that I have reviewed and agree to the privacy policy</FormLabel>
               </FormItem>
             )}
           />
