@@ -3,14 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import { getAppointment } from "@/lib/actions/appointment.actions";
 import { Doctors } from "@/lib/constants";
+import { getAppointment } from "@/lib/db/queries";
 import type { SearchParamProps } from "@/lib/types";
 import { formatDateTime } from "@/lib/utils";
 
 const RequestSuccess = async ({ searchParams, params: { patientId } }: SearchParamProps) => {
   const appointmentId = (searchParams?.appointmentId as string) || "";
   const appointment = await getAppointment(appointmentId);
+
+  if (!appointment) return null;
 
   const doctor = Doctors.find((doctor) => doctor.name === appointment.primaryPhysician);
   if (!doctor) return <h1>Doctor not found</h1>;
@@ -23,7 +25,7 @@ const RequestSuccess = async ({ searchParams, params: { patientId } }: SearchPar
         </Link>
 
         <section className="flex flex-col items-center">
-          <Image src="/assets/gifs/success.gif" height={300} width={280} alt="success" />
+          <Image src="/assets/gifs/success.gif" height={300} width={280} alt="success" unoptimized />
           <h2 className="header mb-6 max-w-[600px] text-center">
             Your <span className="text-green-500">appointment request</span> has been successfully submitted!
           </h2>

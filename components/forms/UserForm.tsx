@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PhoneInput } from "@/components/ui/phone-input";
-import { createUser } from "@/lib/actions/patient.actions";
 import { userFormInitialValues } from "@/lib/constants";
+import { createUser } from "@/lib/db/actions/patient";
 import { userFormSchema } from "@/lib/validationSchemas";
 
 type FormValuesType = z.infer<typeof userFormSchema>;

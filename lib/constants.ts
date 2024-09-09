@@ -91,7 +91,7 @@ export const appointmentBtnLabel = {
 } as const;
 
 export const appointmentStatus = {
-  cancel: "cancelled",
+  cancel: "canceled",
   schedule: "scheduled",
   create: "pending",
 } as const;

@@ -5,16 +5,17 @@ import Link from "next/link";
 import { StatCard } from "@/components/StatCard";
 import { columns } from "@/components/table/columns";
 import { DataTable } from "@/components/table/DataTable";
-import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
+import { getRecentAppointmentList } from "@/lib/db/queries";
 
 const AdminPage = async () => {
   const appointments = await getRecentAppointmentList();
+  if (!appointments) return null;
 
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className="sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12">
         <Link href="/" className="cursor-pointer">
-          <Image src="/assets/icons/logo-full.svg" height={32} width={162} alt="logo" className="h-8 w-fit" />
+          <Image src="/assets/icons/logo-full.svg" height={32} width={140} alt="logo" />
         </Link>
 
         <p className="text-16-semibold">Admin Dashboard</p>
@@ -40,7 +41,7 @@ const AdminPage = async () => {
             icon={<HourglassIcon size={32} color="#79b5ec" />}
           />
           <StatCard
-            type="cancelled"
+            type="canceled"
             count={appointments.cancelledCount}
             label="Cancelled appointments"
             icon={<TriangleAlertIcon size={32} color="#ff4f4e" />}

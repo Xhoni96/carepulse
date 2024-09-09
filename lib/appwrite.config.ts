@@ -1,3 +1,5 @@
+import "server-only";
+
 import * as sdk from "node-appwrite";
 
 export const {

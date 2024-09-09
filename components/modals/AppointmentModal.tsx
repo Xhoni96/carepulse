@@ -37,8 +37,8 @@ export const AppointmentModal = ({
           variant="ghost"
           className={`capitalize focus-visible:ring-offset-1  ${
             type === "schedule"
-              ? "text-green-500 ring-offset-green-500 ring-green-500"
-              : "text-red-700 ring-offset-red-700 ring-red-700"
+              ? "text-green-500 ring-offset-green-500 ring-green-500 hover:bg-green-500/10"
+              : "text-red-700 ring-offset-red-700 ring-red-700 hover:bg-red-700/10"
           }`}
         >
           {type}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { RegisterForm } from "@/components/forms/RegisterForm";
-import { getPatient, getUser } from "@/lib/actions/patient.actions";
+import { getPatient, getUser } from "@/lib/db/queries";
 import type { SearchParamProps } from "@/lib/types";
 
 export default async function Register({ params: { patientId } }: SearchParamProps) {
@@ -12,6 +12,8 @@ export default async function Register({ params: { patientId } }: SearchParamPro
   if (patient) redirect(`new-appointment`);
 
   const user = await getUser(patientId);
+
+  if (!user) return null;
 
   return (
     <div className="flex h-screen max-h-screen">

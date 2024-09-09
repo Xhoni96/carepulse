@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PhoneInput } from "@/components/ui/phone-input";
-import { createPatient } from "@/lib/actions/patient.actions";
 import { IdentificationTypes, patientRegisterFormInitialValues } from "@/lib/constants";
+import { createPatient } from "@/lib/db/actions/patient";
 import type { User } from "@/lib/types";
 import { patientRegisterFormSchema } from "@/lib/validationSchemas";
 

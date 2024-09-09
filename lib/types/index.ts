@@ -1,12 +1,10 @@
-import type { Appointment } from "./appwrite.types";
-
 export type SearchParamProps = {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export type Gender = "Male" | "Female";
-export type Status = "pending" | "scheduled" | "cancelled";
+export type Status = "pending" | "scheduled" | "canceled";
 export type AppointmentType = "create" | "schedule" | "cancel";
 
 export interface CreateUserParams {
@@ -52,7 +50,12 @@ export type CreateAppointmentParams = {
 export type UpdateAppointmentParams = {
   appointmentId: string;
   userId: string;
-  timeZone: string;
-  appointment: Appointment;
+  timeZone?: string;
+  appointment: {
+    primaryPhysician: string;
+    schedule: string;
+    status: Status;
+    cancellationReason: string | null;
+  };
   type: string;
 };

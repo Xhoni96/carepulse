@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 type StatCardProps = {
-  type: "appointments" | "pending" | "cancelled";
+  type: "appointments" | "pending" | "canceled";
   count: number;
   label: string;
   icon: JSX.Element;
@@ -13,7 +13,7 @@ export const StatCard = ({ count = 0, label, icon, type }: StatCardProps) => {
       className={clsx("flex flex-1 flex-col gap-6 rounded-2xl bg-cover p-6 shadow-lg", {
         "bg-appointments": type === "appointments",
         "bg-pending": type === "pending",
-        "bg-cancelled": type === "cancelled",
+        "bg-canceled": type === "canceled",
       })}
     >
       <div className="flex items-center gap-4">

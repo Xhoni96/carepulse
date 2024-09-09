@@ -6,8 +6,8 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { createAppointment, updateAppointment } from "@/lib/actions/appointment.actions";
 import { appointmentBtnLabel, appointmentStatus } from "@/lib/constants";
+import { createAppointment, updateAppointment } from "@/lib/db/actions/appointment";
 import type { AppointmentType, UpdateAppointmentParams } from "@/lib/types";
 import type { Appointment } from "@/lib/types/appwrite.types";
 import { appointmentSchema } from "@/lib/validationSchemas";
@@ -65,7 +65,6 @@ export const AppointmentForm = ({
         const newAppointment = await createAppointment(appointment);
 
         if (newAppointment) {
-          // form.reset();
           router.push(`/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`);
         }
       } else {
@@ -73,7 +72,6 @@ export const AppointmentForm = ({
           const appointmentToUpdate: UpdateAppointmentParams = {
             userId,
             appointmentId: appointment.$id,
-            timeZone: "", //
             appointment: {
               primaryPhysician: values.primaryPhysician,
               schedule: values.schedule,

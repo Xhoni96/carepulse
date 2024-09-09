@@ -13,7 +13,7 @@ export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
 
 export const formatDateTime = (
   dateString: Date | string,
-  timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone
+  timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone,
 ) => {
   const dateTimeOptions: Intl.DateTimeFormatOptions = {
     // weekday: "short", // abbreviated weekday name (e.g., 'Mon')
@@ -71,3 +71,8 @@ export function encryptKey(passkey: string) {
 export function decryptKey(passkey: string) {
   return atob(passkey);
 }
+
+export const handleActionError = (msg: string, error?: unknown) => {
+  console.error(msg, error);
+  throw new Error(msg);
+};

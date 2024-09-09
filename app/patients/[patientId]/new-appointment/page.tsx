@@ -1,12 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
-import { getPatient } from "@/lib/actions/patient.actions";
+import { getPatient } from "@/lib/db/queries";
 import type { SearchParamProps } from "@/lib/types";
 
 export default async function NewAppointment({ params: { patientId } }: SearchParamProps) {
   const patient = await getPatient(patientId);
+
+  if (!patient) {
+    return notFound();
+  }
 
   return (
     <div className="flex h-screen max-h-screen">
@@ -34,6 +39,7 @@ export default async function NewAppointment({ params: { patientId } }: SearchPa
         width={1000}
         alt="appointment"
         className="side-img max-w-[390px] bg-bottom"
+        priority
       />
     </div>
   );
