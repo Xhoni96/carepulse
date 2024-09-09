@@ -1,6 +1,6 @@
 <div align="center">
   <br />
-    <a href="https://github.com/Xhoni96/carepulse" target="_blank">
+    <a href="https://healthcare.xhoni.dev" target="_blank">
       <img src="https://res.cloudinary.com/drvanrh8x/image/upload/v1725917368/healthcare/healthcare-banner.webp" alt="Project Banner">
     </a>
   <br />
