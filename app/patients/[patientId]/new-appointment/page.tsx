@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
+import { LogoHeader } from "@/components/LogoHeader";
 import { getPatient } from "@/lib/db/queries";
 import type { SearchParamProps } from "@/lib/types";
 
@@ -10,22 +9,14 @@ export default async function NewAppointment({ params: { patientId } }: SearchPa
   const patient = await getPatient(patientId);
 
   if (!patient) {
-    return notFound();
+    throw new Error("Patient not found");
   }
 
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
-        <div className="sub-container max-w-[70%]">
-          <Link href="/">
-            <Image
-              src="/assets/icons/logo-full.svg"
-              height={1000}
-              width={1000}
-              alt="logo"
-              className="mb-28 h-10 w-fit"
-            />
-          </Link>
+        <div className="sub-container lg:max-w-[70%]">
+          <LogoHeader />
 
           <AppointmentForm userId={patientId} patientId={patient.$id} type="create" />
 

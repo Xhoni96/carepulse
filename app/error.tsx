@@ -2,16 +2,10 @@
 
 import { AlertCircle } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 
 export default function ErrorBoundary({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
-  useEffect(() => {
-    // Log the error to sentry later if implemented
-    console.error(error);
-  }, [error]);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-gray-800 p-10 rounded-xl shadow-2xl border border-gray-700">

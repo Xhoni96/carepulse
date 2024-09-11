@@ -69,7 +69,7 @@ export const RegisterForm = (props: RegisterFormType) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
         <section className="mb-12 space-y-4">
-          <h1 className="text-28-bold md:text-32-bold text-light-900">Welcome!</h1>
+          <h1 className="text-28-bold text-32-bold text-light-900">Welcome!</h1>
           <p className="text-dark-700">Let us know more about yourself</p>
         </section>
 
@@ -81,8 +81,8 @@ export const RegisterForm = (props: RegisterFormType) => {
             <Input disabled defaultValue={form.control._defaultValues.name} icon={<UserIcon size={18} />} />
           </div>
 
-          <div className="flex gap-3 items-center">
-            <div className="space-y-2 basis-1/2 group" aria-disabled={true}>
+          <div className="flex gap-3 items-center max-xl:flex-col max-xl:items-stretch">
+            <div className="space-y-2 group grow" aria-disabled={true}>
               <Label>Email address</Label>
               <Input disabled icon={<Mail size={18} />} defaultValue={form.control._defaultValues.email} />
             </div>
@@ -93,7 +93,7 @@ export const RegisterForm = (props: RegisterFormType) => {
             </div>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 max-xl:flex-col max-xl:items-stretch">
             <FormField
               control={form.control}
               name="birthDate"
@@ -136,7 +136,7 @@ export const RegisterForm = (props: RegisterFormType) => {
             />
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 max-xl:flex-col max-xl:items-stretch">
             <FormField
               control={form.control}
               name="address"
@@ -165,7 +165,7 @@ export const RegisterForm = (props: RegisterFormType) => {
             />
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 max-xl:flex-col max-xl:items-stretch">
             <FormField
               control={form.control}
               name="emergencyContactName"
@@ -206,7 +206,7 @@ export const RegisterForm = (props: RegisterFormType) => {
           />
 
           {/* INSURANCE & POLICY NUMBER */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 max-xl:flex-col max-xl:items-stretch">
             <FormField
               control={form.control}
               name="insuranceProvider"
@@ -236,7 +236,7 @@ export const RegisterForm = (props: RegisterFormType) => {
           </div>
 
           {/* ALLERGY & CURRENT MEDICATIONS */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 max-xl:flex-col max-xl:items-stretch">
             <FormField
               control={form.control}
               name="allergies"
@@ -266,7 +266,7 @@ export const RegisterForm = (props: RegisterFormType) => {
           </div>
 
           {/* FAMILY MEDICATION & PAST MEDICATIONS */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 max-xl:flex-col max-xl:items-stretch">
             <FormField
               control={form.control}
               name="familyMedicalHistory"

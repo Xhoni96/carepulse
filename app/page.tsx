@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { UserForm } from "@/components/forms/UserForm";
+import { LogoHeader } from "@/components/LogoHeader";
 import { PasskeyModal } from "@/components/modals/PasskeyModal";
 import type { SearchParamProps } from "@/lib/types";
 
@@ -14,13 +15,7 @@ export default function Home({ searchParams }: SearchParamProps) {
 
       <section className="remove-scrollbar container my-auto">
         <div className="sub-container max-w-[496px]">
-          <Image
-            src="/assets/icons/logo-full.svg"
-            height={1000}
-            width={1000}
-            alt="patient"
-            className="mb-28 h-10 w-fit"
-          />
+          <LogoHeader />
 
           <UserForm />
 
